@@ -1,11 +1,11 @@
 {
-    "name": "mosaik",
-    "short_name": "mosaik",
+    "name": "Mosaik+",
+    "short_name": "Mosaik+",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Bildbearbeitungs-App zum Unkenntlichmachen sensibler Bereiche",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

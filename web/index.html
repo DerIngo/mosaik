@@ -18,18 +18,19 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
+  <meta name="description" content="Bildbearbeitungs-App zum Unkenntlichmachen sensibler Bereiche">
+  <meta property="og:title" content="Mosaik+">
+  <meta property="og:description" content="Bildbearbeitungs-App zum Unkenntlichmachen sensibler Bereiche">
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="mosaik">
+  <meta name="apple-mobile-web-app-title" content="Mosaik+">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>mosaik</title>
+  <title>Mosaik+</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -41,6 +42,32 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
+  <!-- PWA Install Helper Script -->
+  <script>
+    window.deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      window.deferredPrompt = e;
+    });
+
+    window.hasDeferredPrompt = function() {
+      return window.deferredPrompt !== null;
+    };
+
+    window.isPwaInstalled = function() {
+      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    };
+
+    window.promptInstall = async function() {
+      if (window.deferredPrompt) {
+        window.deferredPrompt.prompt();
+        const { outcome } = await window.deferredPrompt.userChoice;
+        window.deferredPrompt = null;
+        return outcome === 'accepted';
+      }
+      return false;
+    };
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
